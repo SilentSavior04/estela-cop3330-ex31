@@ -12,7 +12,6 @@ public class Main {
 
         int intensity = 55;
         System.out.println("Intensity | Rate ");
-        System.out.println("------------------------");
 
         while(intensity<96){
             int Target = (((220 - age) - restingHR) * intensity) + restingHR;
