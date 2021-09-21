@@ -3,26 +3,32 @@ import java.util.Scanner;
 
 public class KarvonenHR {
 
-        public static void main(String[] args)
-        {
-            int restingHR,age;
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
 
-            Scanner sc=new Scanner(System.in);
-            restingHR = sc.nextInt();
-            age = sc.nextInt();
+        int age = 0;
+        while (age < 1) {
+            System.out.print("Age: ");
+            age = input.nextInt();
 
-            System.out.println("Resting Pulse: " + restingHR + " Age: " + age);
+            if (age < 1)
+                System.out.println("Invalid input. \n");
+        }
 
-            int intensity = 55;
-            System.out.println("Intensity | Rate ");
+        int restingHR = 0;
 
-            while(intensity<96){
-                int Target = (((220 - age) - restingHR) * intensity) + restingHR;
+        while (restingHR < 55 || restingHR > 95) {
+            System.out.print("Enter resting HR (55 - 95): ");
+            restingHR = input.nextInt();
 
-                System.out.println(intensity+ "% | "+Target +" bpm ");
-                intensity+=5;
-            }
+            if (restingHR < 55 || restingHR > 95)
+                System.out.println("Invalid Input. \n");
+        }
+
+        System.out.println("\nIntensity \tRate");
+        for (int intensity = 55; intensity <= restingHR; intensity += 5) {
+            double rate = (((220 - age) - restingHR) * (intensity / 100.0)) + restingHR;
+            System.out.println(intensity + "%" + "\t\t" + (int) Math.ceil(rate) + "BPM");
         }
     }
-
-
+}
